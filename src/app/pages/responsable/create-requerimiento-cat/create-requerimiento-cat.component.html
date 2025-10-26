@@ -1,0 +1,194 @@
+<div nz-row nzGutter="25">
+    <!-- skeleton -->
+    <ng-template #loadingSkeleton>
+      <nz-skeleton class="bg-white dark:bg-white/10 rounded-6 p-[30px] pt-[15px]" [nzShape]="circle" [nzActive]="true"
+        [nzParagraph]="{ rows: 6 }"></nz-skeleton>
+    </ng-template>
+    <!-- skeleton -->
+  
+  
+    
+    <div nz-col nzXs="24" class="mb-[25px]">
+      <ng-container *ngIf="showContent; else loadingSkeleton">
+        <div
+          class="bg-white dark:bg-white/10 m-0 p-0 text-theme-gray dark:text-white/60 text-[15px] rounded-10 relative h-full">
+          <div
+            class="py-[16px] px-[25px] text-dark dark:text-white/[.87] font-medium text-[17px] border-regular dark:border-white/10 border-b">
+            <h4 class="mb-0 text-lg font-medium text-dark dark:text-white/[.87]">Requerimiento catálogo II</h4>
+          </div>
+          <div class="p-[25px]">
+            <form nz-form [formGroup]="validateForm">
+                <h4 class="mb-0 text-lg font-medium text-dark dark:text-white/[.87]">Información del paciente</h4>
+                <br>
+              <nz-form-item>
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">Folio</nz-form-label>
+                <nz-form-control nzXs="4" nzErrorTip="Campo requerido." >
+                  <input formControlName="folio"
+                    class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                    nz-input name="text2" type="text" id="text2">
+                </nz-form-control>
+             
+                <nz-form-control nzXs="1">
+                
+                </nz-form-control>
+
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">NSS</nz-form-label>
+                <nz-form-control nzXs="4" nzErrorTip="Campo requerido." >
+                  <input formControlName="nss"
+                    class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                    nz-input name="text2" type="text" id="text2"
+                    minlength="11" maxlength="11" pattern="[0-9]*"  (keypress)="validateInput($event)">
+                </nz-form-control>
+
+                <nz-form-control nzXs="1">
+                
+                </nz-form-control>
+
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="1" nzFor="text2">Agregado</nz-form-label>
+                <nz-form-control nzXs="3" nzErrorTip="Campo requerido." >
+                  <input formControlName="agregado"
+                    class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                    nz-input name="text2" type="text" id="text2">
+                </nz-form-control>
+
+                <nz-form-control nzXs="1">
+                
+                </nz-form-control>
+                
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">Nombre</nz-form-label>
+                <nz-form-control nzXs="5" nzErrorTip="Campo requerido." >
+                  <input formControlName="nombrePaciente"
+                    class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                    nz-input name="text2" type="text" id="text2">
+                </nz-form-control>
+              </nz-form-item>
+
+             
+              <nz-form-item>
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">Diagnostico</nz-form-label>
+                <nz-form-control nzXs="6" nzErrorTip="Campo requerido." >
+                    <textarea
+                    nz-input
+                    
+                    [nzAutosize]="{ minRows: 3, maxRows: 3 }"
+                    formControlName="diagnostico"
+                    class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                  ></textarea>
+                </nz-form-control>
+             
+                <nz-form-control nzXs="1">
+                
+                </nz-form-control>
+              
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">Observaciones</nz-form-label>
+                <nz-form-control nzXs="6" nzErrorTip="Campo requerido." >
+                    <textarea
+                    nz-input
+                    
+                    [nzAutosize]="{ minRows: 3, maxRows: 3 }"
+                    formControlName="observaciones"
+                    class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                  ></textarea>
+                </nz-form-control>
+
+                <nz-form-control nzXs="1"></nz-form-control>
+
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">Requerimiento<br>mensual</nz-form-label>
+                <nz-form-control nzXs="6" nzErrorTip="Campo requerido." >
+                    <textarea
+                    nz-input
+                    
+                    [nzAutosize]="{ minRows: 3, maxRows: 3 }"
+                    formControlName="requerimientoMensual"
+                    class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                  ></textarea>
+                </nz-form-control>
+
+              </nz-form-item>
+              <h4 class="mb-0 text-lg font-medium text-dark dark:text-white/[.87]">Información de la solicitud</h4>
+              <br>
+              <nz-form-item >
+              
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">Clave</nz-form-label>
+                <nz-form-control nzXs="6" nzErrorTip="Campo requerido." >
+                    <input formControlName="claveMedicamento"
+                      class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                      nz-input name="text2" type="text" id="text2"
+                      maxlength="14" pattern="[0-9]*"  (keypress)="validateInput($event)"
+                      >
+                </nz-form-control>
+              
+                <nz-form-control nzXs="1"></nz-form-control>
+
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">Meses</nz-form-label>
+                <nz-form-control nzXs="6" nzErrorTip="Campo requerido." >
+                    <input formControlName="meses"
+                      class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                      nz-input name="text2" type="number" id="text2">
+                </nz-form-control>
+
+                <nz-form-control nzXs="1"></nz-form-control>
+
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">Piezas</nz-form-label>
+                <nz-form-control nzXs="6" nzErrorTip="Campo requerido." >
+                    <input formControlName="piezas"
+                      class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                      nz-input name="text2" type="number" id="text2">
+                </nz-form-control>
+
+               
+
+              </nz-form-item>
+              <br>
+              <nz-form-item >
+
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">Vencimiento</nz-form-label>
+                <nz-form-control nzXs="6" nzErrorTip="Campo requerido." >
+                    <input formControlName="fechaVencimiento"
+                      class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                      nz-input name="text2" type="date" id="text2">
+                </nz-form-control>
+
+                <nz-form-control nzXs="1"></nz-form-control>
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2" nzFor="text2">Evaluacion</nz-form-label>
+                <nz-form-control nzXs="6" nzErrorTip="Campo requerido." >
+                    <input formControlName="fechaEvaluacion"
+                      class="w-full rounded-4 border-normal border-1 text-[15px] dark:bg-white/10 dark:border-white/10 px-[20px] py-[12px] h-[46px] outline-none placeholder:text-[#A0A0A0] text-theme-gray dark:text-white/60"
+                      nz-input name="text2" type="date" id="text2">
+                </nz-form-control>
+
+                <nz-form-control nzXs="1"></nz-form-control>
+                
+                <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="2"
+                nzFor="pass">Archivo</nz-form-label>
+
+                <nz-form-control nzXs="6">
+                  <input formControlName="archivo" type="file" (change)="onFileSelect($event)">
+                </nz-form-control>
+
+                
+              
+              </nz-form-item>
+
+             
+
+              
+              <nz-form-item nzJustify="end">
+                <nz-form-control nzXs="19"></nz-form-control>
+                <nz-form-control nzXs="3">
+                  <div class="flex flex-wrap gap-[15px]">
+                    <button nz-button (click)="submitForm()" [nzLoading]="btnLoading"
+                      class="bg-primary hover:bg-primary-hbr border-solid border-1 border-primary text-white dark:text-white/[.87] text-[14px] font-semibold leading-[22px] inline-flex items-center justify-center rounded-[4px] px-[20px] h-[44px] duration-300">
+                      <span>Registrar solicitud</span>
+                    </button>
+                  </div>
+                </nz-form-control>
+              </nz-form-item>
+
+            </form>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    </div>
+  

@@ -1,0 +1,87 @@
+<div nz-row nzGutter="25">
+  <!-- skeleton -->
+  <ng-template #loadingSkeleton>
+    <nz-skeleton class="bg-white dark:bg-white/10 rounded-6 p-[30px] pt-[15px]" [nzShape]="circle" [nzActive]="true"
+      [nzParagraph]="{ rows: 6 }"></nz-skeleton>
+  </ng-template>
+  <!-- skeleton -->
+
+  <div nz-col nzXs="24" class="mb-[25px]">
+    <ng-container *ngIf="showContent; else loadingSkeleton">
+      <div
+        class="bg-white dark:bg-white/10 m-0 p-0 text-theme-gray dark:text-white/60 text-[15px] rounded-10 relative h-full">
+        <div
+          class="py-[16px] px-[25px] text-dark dark:text-white/[.87] font-medium text-[17px] border-regular dark:border-white/10 border-b">
+          <h4 class="mb-0 text-lg font-medium text-dark dark:text-white/[.87]">Medicamentos caducos</h4>
+        </div>
+        <div class="p-[25px]">
+          <div>
+            
+            <div class="p-[25px]">
+
+              <div class="flex items-center justify-center w-full mt-5 mb-[25px] max-md:flex-col max-md:justify-center gap-[15px]">
+                <div class="inline-flex items-center flex-wrap w-full gap-[20px] max-md:justify-center">
+                </div>
+                <div class="ssm:min-w-[280px]">
+                  <nz-input-group class="h-10 inline-flex items-center text-body dark:text-white/60 bg-white dark:bg-white/10 border-normal border-1 dark:border-white/10 rounded-[6px] px-[20px]">
+                    <i class="text-light dark:text-white/[.87] text-[18px]" nz-icon nzType="search"></i>
+                    <input
+                      class="bg-transparent border-none text-[15px] shadow-none text-dark dark:text-white/[.87] flex items-center"
+                      type="text"
+                      nz-input
+                      placeholder="Buscar"
+                      [(ngModel)]="searchValue"
+                      (ngModelChange)="filterItems()"
+                    />
+                  </nz-input-group>
+                </div>
+              </div>
+
+                    <div class="w-full overflow-x-auto">
+                      <input #fileInput accept=".pdf" type="file" (change)="onFileSelect($event)" style="display: none;">
+                        <nz-table #basicTable 
+                        nzShowSizeChanger
+                        [nzData]="filteredData"
+                        >
+                          <thead>
+                            <tr>
+                              <th class="bg-regularBG dark:bg-[#323440] px-[20px] py-[16px] text-start text-dark dark:text-white/[.87] text-[15px] font-medium border-none before:hidden capitalize">Lote</th>
+                              <th class="bg-regularBG dark:bg-[#323440] px-[20px] py-[16px] text-start text-dark dark:text-white/[.87] text-[15px] font-medium border-none before:hidden capitalize">Clave</th>
+                              <th class="bg-regularBG dark:bg-[#323440] px-[20px] py-[16px] text-start text-dark dark:text-white/[.87] text-[15px] font-medium border-none before:hidden capitalize">Descripcion</th>
+                              <th class="bg-regularBG dark:bg-[#323440] px-[20px] py-[16px] text-start text-dark dark:text-white/[.87] text-[15px] font-medium border-none before:hidden capitalize">Fecha de caducidad</th>
+                              <th class="bg-regularBG dark:bg-[#323440] px-[20px] py-[16px] text-start text-dark dark:text-white/[.87] text-[15px] font-medium border-none before:hidden capitalize">Cantidad</th>
+                              <th class="bg-regularBG dark:bg-[#323440] px-[20px] py-[16px] text-start text-dark dark:text-white/[.87] text-[15px] font-medium border-none before:hidden capitalize">Tiene carta canje</th>
+                              <th class="bg-regularBG dark:bg-[#323440] px-[20px] py-[16px] text-start text-dark dark:text-white/[.87] text-[15px] font-medium border-none before:hidden capitalize"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          <tr class="group" *ngFor="let item of basicTable.data">
+                             <td class="ltr:pr-[20px] rtl:pl-[20px] text-dark dark:text-white/[.87] text-[15px] py-4 before:hidden border-none group-hover:bg-transparent">{{ item.lote }}</td>
+                             <td class="ltr:pr-[20px] rtl:pl-[20px] text-dark dark:text-white/[.87] text-[15px] py-4 before:hidden border-none group-hover:bg-transparent">{{ item.gpo }}.{{ item.gen }}.{{ item.esp }}.{{ item.dif }}.{{ item.var }}</td> 
+                             <td class="ltr:pr-[20px] rtl:pl-[20px] text-dark dark:text-white/[.87] text-[15px] py-4 before:hidden border-none group-hover:bg-transparent">{{ item.descripcion }}</td> 
+                             <td class="ltr:pr-[20px] rtl:pl-[20px] text-dark dark:text-white/[.87] text-[15px] py-4 before:hidden border-none group-hover:bg-transparent">{{ item.fechaCaducidad | date: 'dd/MM/yyyy'}}</td> 
+                             <td class="ltr:pr-[20px] rtl:pl-[20px] text-dark dark:text-white/[.87] text-[15px] py-4 before:hidden border-none group-hover:bg-transparent">{{ item.cantidad }}</td> 
+                             <td class="ltr:pr-[20px] rtl:pl-[20px] text-dark dark:text-white/[.87] text-[15px] py-4 before:hidden border-none group-hover:bg-transparent">
+                              <div *ngIf="item.tieneCartaCanje == true">Si</div>
+                              <div *ngIf="item.tieneCartaCanje == false">No</div>
+                            </td> 
+                             <td class="ltr:pr-[20px] rtl:pl-[20px] text-dark dark:text-white/[.87] text-[15px] py-4 before:hidden border-none group-hover:bg-transparent">
+                              <div class="flex items-center gap-[10px]">
+                                <a class="text-light-extra text-18" nz-dropdown nzPlacement="bottomRight" nzTrigger="click"
+                                    [nzDropdownMenu]="projectListSetting2">
+                                    <span nz-icon nzType="more" nzTheme="outline"></span>
+                                  </a>
+                                
+                              </div>
+                             </td>
+                            </tr>
+                          </tbody>
+                        </nz-table>
+                      </div>
+                  </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  </div>

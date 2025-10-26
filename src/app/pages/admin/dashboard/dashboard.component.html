@@ -1,0 +1,121 @@
+<div nz-row [nzGutter]="25">
+    <!-- skeleton -->
+  <ng-template #loadingSkeleton>
+    <nz-skeleton [nzAvatar]="true" class="bg-white dark:bg-white/10 rounded-6 p-[30px] pt-[15px]" [nzShape]="circle" [nzActive]="true" [nzParagraph]="{ rows: 4 }"></nz-skeleton>
+  </ng-template>
+    <!-- skeleton -->
+  
+  <!-- overview List -->
+  <div nz-col nzXs="24" nzXXl="24" class="w-full [&>.ant-skeleton]:mb-[25px]">
+    <ng-container *ngIf="showContent; else loadingSkeleton">
+        <div nz-row [nzGutter]="25">
+            <div nz-col class="mb-[25px]" nzXs="24" nzSm="12" nzXXl="6">
+              <div bordered="false"
+                class="bg-white dark:bg-white/10 py-[25px] px-[25px] pb-[12px] overflow-hidden rounded-10 relative text-[15px] text-theme-gray dak:text-white/60">
+                <div class="flex justify-between">
+                  <div>
+                    <span class="font-normal text-body dark:text-white/60 text-15">Altas pendientes</span>
+                    <h4
+                      class="mb-0 text-3xl max-lg:text-[26px] max-sm:text-2xl font-semibold leading-normal text-dark dark:text-white/[.87]">
+                      <span>
+                        {{ altasPendientes | number: '1.0-0'}}
+                      </span>
+                    </h4>
+                  </div>
+                  <div
+                    class="absolute top-0 ltr:-right-[140px] rtl:-left-[140px] w-[230px] max-md:w-[210px] max-ssm:w-[230px] px-[30px] rounded-full h-full flex items-center justify-start overflow-hidden bg-primary/10 text-primary ">
+                      <div class="flex items-center justify-center text-primary">
+                        <div class="fill-primary flex items-center">
+                          <svg-icon class="w-[35px] h-[35px] [&>svg]:w-[35px] [&>svg]:h-[35px] max-md:[&>svg]:w-[25px] max-md:[&>svg]:h-[25px]"
+                            src="../../../../assets/images/svg/unicons-line/arrow-growth.svg"></svg-icon>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div nz-col class="mb-[25px]" nzXs="24" nzSm="12" nzXXl="6">
+              <div bordered="false"
+                class="bg-white dark:bg-white/10 py-[25px] px-[25px] pb-[12px] overflow-hidden rounded-10 relative text-[15px] text-theme-gray dak:text-white/60">
+                <div class="flex justify-between">
+                  <div>
+                    <span class="font-normal text-body dark:text-white/60 text-15">Medicamentos caducos</span>
+                    <h4
+                      class="mb-0 text-3xl max-lg:text-[26px] max-sm:text-2xl font-semibold leading-normal text-dark dark:text-white/[.87]">
+                      <span>
+                        {{ medicamentosCaducos | number: '1.0-0'}}
+                      </span>
+                    </h4>
+                  </div>
+                  <div
+                    class="absolute top-0 ltr:-right-[140px] rtl:-left-[140px] w-[230px] max-md:w-[210px] max-ssm:w-[230px] px-[30px] rounded-full h-full flex items-center justify-start overflow-hidden bg-primary/10 text-primary ">
+                      <div class="flex items-center justify-center text-primary">
+                        <div class="fill-primary flex items-center">
+                          <svg-icon class="w-[35px] h-[35px] [&>svg]:w-[35px] [&>svg]:h-[35px] max-md:[&>svg]:w-[25px] max-md:[&>svg]:h-[25px]"
+                            src="../../../../assets/images/svg/unicons-line/medical-square.svg"></svg-icon>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div nz-col class="mb-[25px]" nzXs="24" nzSm="12" nzXXl="6">
+              <div bordered="false"
+                class="bg-white dark:bg-white/10 py-[25px] px-[25px] pb-[12px] overflow-hidden rounded-10 relative text-[15px] text-theme-gray dak:text-white/60">
+                <div class="flex justify-between">
+                  <div>
+                    <span class="font-normal text-body dark:text-white/60 text-15">Dias desde el ultimo inventario</span>
+                    <h4
+                      class="mb-0 text-3xl max-lg:text-[26px] max-sm:text-2xl font-semibold leading-normal text-dark dark:text-white/[.87]">
+                      <span>
+                        {{ diasUltimoInventario | number: '1.0-0'}}
+                      </span>
+                    </h4>
+                  </div>
+                  <div
+                    class="absolute top-0 ltr:-right-[140px] rtl:-left-[140px] w-[230px] max-md:w-[210px] max-ssm:w-[230px] px-[30px] rounded-full h-full flex items-center justify-start overflow-hidden bg-primary/10 text-primary ">
+                      <div class="flex items-center justify-center text-primary">
+                        <div class="fill-primary flex items-center">
+                          <svg-icon class="w-[35px] h-[35px] [&>svg]:w-[35px] [&>svg]:h-[35px] max-md:[&>svg]:w-[25px] max-md:[&>svg]:h-[25px]"
+                            src="../../../../assets/images/svg/unicons-line/box.svg"></svg-icon>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+    </ng-container>
+  </div>
+  <!-- end: overview List -->
+  
+  <!-- sales revenue -->
+    <div nz-col nzXs="24" nzXXl="24" class=" mb-[25px]">
+    <ng-container *ngIf="showContent; else loadingSkeleton">
+        <div class="bg-white dark:bg-white/10 m-0 p-0 text-theme-gray dark:text-white/60 text-[15px] rounded-10 relative ">
+            <div
+              class="px-[25px] text-dark dark:text-white/[.87] font-medium text-[17px] flex flex-wrap items-center justify-between max-sm:flex-col max-sm:h-auto max-sm:mb-[15px]">
+              <h1
+                class="mb-0 inline-flex items-center py-[16px] max-sm:pb-[5px] overflow-hidden whitespace-nowrap text-ellipsis text-[18px] font-semibold text-dark dark:text-white/[.87]">
+                Comportamiento de caducidades</h1>
+            </div>
+            <div class="p-[25px] pt-0" *ngIf="chartOptions">
+                <div id="chartLine2" dir="ltr">
+                    <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis"
+                      [yaxis]="chartOptions.yaxis" [dataLabels]="chartOptions.dataLabels" [grid]="chartOptions.grid"
+                      [stroke]="chartOptions.stroke" [title]="chartOptions.title" [plotOptions]="chartOptions.plotOptions"
+                      [legend]="chartOptions.legend" [tooltip]="chartOptions.tooltip" [states]="chartOptions.states" [colors]="chartOptions.colors" [fill]="chartOptions.fill"></apx-chart>
+                  </div>
+            </div>
+          </div>
+    </ng-container>
+  </div>
+ <!--end: sales revenue -->
+  
+  
+  </div>
+  

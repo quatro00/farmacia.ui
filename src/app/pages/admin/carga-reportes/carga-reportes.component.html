@@ -1,0 +1,56 @@
+
+
+<div nz-row nzGutter="25">
+    <!-- skeleton -->
+    <ng-template #loadingSkeleton>
+      <nz-skeleton class="bg-white dark:bg-white/10 rounded-6 p-[30px] pt-[15px]" [nzShape]="circle" [nzActive]="true"
+        [nzParagraph]="{ rows: 6 }"></nz-skeleton>
+    </ng-template>
+    <!-- skeleton -->
+    
+    <div nz-col nzXs="24" class="mb-[25px]">
+      <ng-container *ngIf="showContent; else loadingSkeleton">
+        <div
+          class="bg-white dark:bg-white/10 m-0 p-0 text-theme-gray dark:text-white/60 text-[15px] rounded-10 relative h-full">
+          <div
+            class="py-[16px] px-[25px] text-dark dark:text-white/[.87] font-medium text-[17px] border-regular dark:border-white/10 border-b">
+            <h4 class="mb-0 text-lg font-medium text-dark dark:text-white/[.87]">Subir reportes</h4>
+          </div>
+          <div class="p-[25px]">
+            <div>
+              <form class="max-w-full" [formGroup]="validateFormFactura">
+                <nz-form-item>
+                    <nz-form-label class="flex items-center font-medium dark:text-white/60" nzXs="4" nzFor="text2">Reporte de altas</nz-form-label>
+                  <nz-form-control class="mb-[20px]" nzXs="4">
+                    <input formControlName="csv" type="file" (change)="onFileSelectPdf($event)" accept=".csv">
+                  </nz-form-control>
+
+                  <nz-form-control nzXs="2">
+                </nz-form-control>
+
+                <nz-form-control nzXs="1">
+                    <button [nzLoading]="btnLoading" (click)="submitForm()" class="bg-primary hover:bg-primary-hbr inline-flex items-center outline-none shadow-none w-fit duration-300 text-white capitalize px-[20px] text-[15px] border-primary hover:border-primary-hbr rounded-[5px] gap-[8px] h-[46px]" nz-button nzType="primary" >
+                          <span>Enviar</span>
+                        </button>
+                    </nz-form-control>
+                
+
+                </nz-form-item>
+
+                <nz-form-item>
+                
+
+                
+
+                 
+                </nz-form-item>
+
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    </div>
+  
